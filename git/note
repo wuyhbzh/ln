@@ -1,0 +1,77 @@
+mkdir
+cat
+rm
+pwd
+ssh-keygen -t rsa -C "email@163.com"  生成ssh key
+
+git config --global user.name "username"
+git config --global user.email "email@xx.com"
+git config --global -l
+
+git init		创建版本库
+git add			添加到暂存区
+git commit 		提交到版本库
+		-m 		提交说明
+git status		查看状态
+git diff		对比
+	HEAD -- fileName
+git log			日志
+		--pretty=oneline
+git reset
+		--hard HEAD^		切换到版本1
+		--hard HEAD~100		切换到版本100
+		--hard commidId		切换到指定版本
+		HEAD fileName		撤销暂存区file
+git reflog		head日志
+git checkout	从暂存区获取文件/切换分支
+		-- fileName
+git rm	删除文件
+
+远程仓库
+git remote add origin git@github.com:wuyhbzh/learngit.git
+git remote add origin https://github.com/wuyhbzh/learngit.git
+git push -u origin master
+git clone git@github.com:wuyhbzh/learngit.git
+
+分支管理
+git branch branch-name 			创建分支
++
+git checkout branch-name 		切换分支
+=
+git checkout -b branch-name		创建分支并切换
+git branch 						查看分支
+git merge branch-name			合并分支
+git branch -d branch-name		删除分支
+git log --graph 				查看分支合并图
+		--pretty=oneline --abbrev-commit
+git merge --no-ff -m"log" name	不用快速合并
+
+当前分支有修改但未提交时,不能切换到别的分支，
+通过 stash 后，可切换到别的分支工作
+git stash						保存工作现场
+git stash list					查看工作现场记录
+git stash apply					恢复工作现场
+git stash drop					删除工作现场记录
+git stash pop					恢复并删除工作现场记录
+
+git branch -D feature-vulcan	未合并的分支删除时需要D
+
+git remote -v 					查看远程信息
+git branch -a 					查看远程分支信息
+git push origin local-branch 	推送本地分支修改到远程仓库
+git checkout -b dev origin/dev	创建远程origin的dev分支到本地
+git branch --set-upstream-to=origin/dev dev 关联dev分支到远程dev
+git pull	取回远程主机更新，再与本地合并
+git pull origin <远程分支名>:<本地分支名>
+git push origin <本地分支>:<远程分支>
+
+git tag 							命名指向最新的commit
+git tag <tagname>
+git tag <tagname> commitId
+git tag -a <tagname> -m "blablabla" 指定提交tagname的说明
+git tag -s <tagname> -m "albalba" 	用gpg加密私钥签名一个标签
+git show <tagname>
+git tag -d v0.1						删除v0.1 tag
+git push origin v1.0 				推送v1.0 tag到远程
+git push origin --tags 				推送所有tag到远程
+git push origin :refs/tags/v0.9 	删除远程的v0.9 tag
