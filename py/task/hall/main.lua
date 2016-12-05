@@ -1,0 +1,1 @@
+local gamePath = "qx.game.JNGouji"
