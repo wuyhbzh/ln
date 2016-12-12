@@ -16,6 +16,7 @@ def _input(str):
     else:
         return raw_input(str)
 
+# test.py -f -d -n name
 # 只找到key则 返回 true
 # 如能找到key的value 返回 value
 # 否则返回None

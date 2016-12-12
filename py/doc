@@ -1,0 +1,20 @@
+# coding: utf-8
+# and		exec	not
+# assert	finally	or
+# break		for		pass
+# class		from	print
+# continue	global	raise
+# def		if		return
+# del		import	try
+# elif		in		while
+# else		is		with
+# except	lambda	yield
+
+#del except exec finally global pass raise yield
+
+# coding:utf-8
+
+print("你好")
+
+test_str = "你好%s,给你%d元%.3f角%x" % ('小玉',100,3.1415926,255) 
+print(test_str)
