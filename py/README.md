@@ -32,11 +32,22 @@ Ctrl+shift+p 键入 install packages
 当然每次通过Tools->SublimeREPL->Python这样的方式比较繁琐
 将这样的操作和一个按键如F1绑定后，就会方便很多啦
 e.g.打开Preferences->Key Bindings-User，复制一下代码：
-[{"keys":["f1"],
-"caption": "SublimeREPL: Python - RUN current file",
-"command": "run_existing_window_command", "args":
-{"id": "repl_python_run","file": "config/Python/Main.sublime-menu"}
-}]
+[
+	{
+		"keys":["ctrl+1"],
+		"caption": "SublimeREPL: Python - RUN current file",
+		"command": "run_existing_window_command", "args":
+		{"id": "repl_python_run","file": "config/Python/Main.sublime-menu"}
+	},
+	{
+		"keys":["ctrl+2"],
+		"caption": "SublimeREPL: Python - PDB current file",
+		"command": "run_existing_window_command", "args":
+		{"id": "repl_python_pdb","file": "config/Python/Main.sublime-menu"}
+	},
+]
+
+
 4.Alt+shift+2 打开新窗口
 
 
