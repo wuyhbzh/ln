@@ -1,5 +1,6 @@
-:: å¯é…å‚æ•° 
-:: -dir æ–‡ä»¶å¤¹åç§°
-:: python publish.py -dir AVGouji
+:: ¿ÉÅä²ÎÊı 
+:: -dir 	ÎÄ¼ş¼ĞÃû³Æ
+:: -p 		serverÄ¿Â¼Â·¾¶£¬Ä¬ÈÏÎª../
+::python publish.py -dir AVGouji -p D:/svn/dfqf/server/
 python publish.py
 pause

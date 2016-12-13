@@ -1,39 +1,20 @@
 #!/usr/bin/python
 #coding=utf-8
 
-import shutil, os, sys
+import shutil, os
+from atool import getArgvValue, _input, log, logVersion
 
-isPython35 = int(sys.version[0]) > 2
+server = ""
 publish_dir = "publish"
 gameserver_dir = "GameServer"
 allocserver_dir = "AllocServer"
 games_path = "GameServer/bin/quickX/games"
 
+def initPath(path):
+    global server, publish_dir
+    server = path + '/'
+    publish_dir = path + '/' + publish_dir
 
-def _input(str):
-    if isPython35 == True:
-        return input(str)
-    else:
-        return raw_input(str)
-
-def getArgvValue(argvKey):
-    argvKeyIndex = 0
-    argvValueIndex = 0
-    if argvKey in sys.argv:
-        argvKeyIndex = sys.argv.index(argvKey)
-        argvValueIndex = argvKeyIndex + 1
-
-    if argvValueIndex < len(sys.argv) and len(sys.argv) > 1:
-        return sys.argv[argvValueIndex]
-    else:
-        return None
-
-
-def log(str):
-    print(str)
-
-def logVersion():
-    log('python versin ' + sys.version[0:3])
 
 def getGamesDir():
     dirlist = os.listdir(games_path)
@@ -63,7 +44,7 @@ def copyDirTo(proj_dir, publish_path):
     if os.path.exists(publish_path):
         log(publish_path + ' is exists, publish fail')
     else:
-        log(publish_path + ' is publish success')
+        log('copy file to ' + publish_path)
         shutil.copytree(proj_dir, publish_path)
 
 def publishGame(gameDirName):
@@ -81,10 +62,13 @@ def publishGame(gameDirName):
     publish_game_path = publish_path + '/' + games_path
 
     # 拷贝AllocServer
-    copyDirTo(allocserver_dir, publish_allocserver_path)
+    copyDirTo(server + allocserver_dir, publish_allocserver_path)
+
     # 拷贝GameServer
-    copyDirTo(gameserver_dir, publish_gameserver_path)
+    copyDirTo(server + gameserver_dir, publish_gameserver_path)
+
     # 删除其他子游戏
+    log('delete other game folder')
     dirlist = os.listdir(publish_game_path)
     for dirname in dirlist:
         if dirname != gameDirName and dirname != 'common':
@@ -92,7 +76,7 @@ def publishGame(gameDirName):
 
 
 def isGameDirExists(gamedir):
-    dirlist = os.listdir(games_path)
+    dirlist = os.listdir(server + games_path)
     if gamedir and not gamedir in dirlist:
         log('error: not folder ' + gamedir)
         return False
@@ -110,6 +94,11 @@ def getGameDirName():
 
 def main():
     logVersion()
+
+    path = getArgvValue('-p')
+    path = path or '../'
+    initPath(path)
+
     gamedir = getGameDirName()
     publishGame(gamedir)
 

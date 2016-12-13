@@ -2,53 +2,23 @@
 #coding=utf-8
 
 import shutil, os, sys, re
+from atool import getArgvValue, _input, log, logVersion
 
-isPython35 = int(sys.version[0]) > 2
 gamespath = 'GameServer/bin/quickX/games'
 temppath = 'GameServer/bin/quickX/games/template'
 allocserver_path = 'AllocServer'
 gameserver_path = 'GameServer'
 
 
-def _input(str):
-    if isPython35 == True:
-        return input(str)
-    else:
-        return raw_input(str)
-
-# test.py -f -d -n name
-# 只找到key则 返回 true
-# 如能找到key的value 返回 value
-# 否则返回None
-def getArgvValue(argvKey):
-    argvKeyIndex = 0
-    argvValueIndex = 0
-    argvValue = None
-    argvValueTemp = '-'
-
-    if argvKey in sys.argv:
-        argvKeyIndex = sys.argv.index(argvKey)
-        argvValueIndex = argvKeyIndex + 1
-
-    if argvKeyIndex>0:
-        argvValue = True
-    
-    if argvValueIndex < len(sys.argv) and len(sys.argv) > 1 and argvValueIndex>0:
-        argvValueTemp = sys.argv[argvValueIndex]
-    
-    if argvValueTemp[0] != '-':
-        argvValue = argvValueTemp
-
-    return argvValue
 
 
+def initPath(path):
+    global gamespath, temppath, allocserver_path, gameserver_path
+    gamespath = path + gamespath;
+    temppath = path + temppath;
+    allocserver_path = path + allocserver_path;
+    gameserver_path = path + gameserver_path;
 
-def log(*str):
-    print(*str)
-
-
-def logVersion():
-    log('python versin ' + sys.version[0:3])
 
 # 创建自命名文件夹，复制代码过去,如同名删除在创建
 def copyGameDir(dirname, force):
@@ -99,7 +69,7 @@ def getFileByDimName(dirPath, dimName):
     dirList = os.listdir(dirPath)
     searchName = None
     for fileName in dirList:
-        searchName = re.search('Alloc[a-zA-Z]+', fileName, flags=0)
+        searchName = re.search('Alloc[a-zA-Z0-9]+', fileName, flags=0)
         if searchName != None:
             break
 
@@ -126,7 +96,7 @@ def reNameFile(fileDirPath, fileList):
             os.rename(targetFilePath, newFilePath)
             log('reNameFile', targetFilePath, newFileName + ' -> ' + targetFileName)
 
-def updateConf(dirName, gameId, userCount):
+def updateConf(dirName, gameId, userCount, ip):
     allocConfPath = allocserver_path + '/conf/Server.ini'
     allocStartShPath = allocserver_path + '/bin/start.sh'
     
@@ -139,10 +109,13 @@ def updateConf(dirName, gameId, userCount):
         [allocConfPath, 'GameId=[1-9][0-9]+', 'GameId='+str(gameId)],
         [allocConfPath, 'logFile=[a-zA-Z]+Alloc', 'logFile='+dirName+'Alloc'],
         [allocConfPath, 'MaxUserCount=[1-9][0-9]{0,1}', 'MaxUserCount='+str(userCount)],
+        [allocConfPath, 'serverIp = [0-9]+.[0-9]+.[0-9]+.[0-9]+', 'serverIp = '+str(ip)],
+
         [allocStartShPath, 'Alloc[a-zA-Z]+', 'Alloc' + dirName],
         [gameConfPath, 'GameId=[1-9][0-9]+', 'GameId='+str(gameId)],
         [gameConfPath, 'logFile=[a-zA-Z]+Game', 'logFile='+dirName+'Game'],
         [gameConfPath, 'sid=[1-9][0-9]+', 'sid='+str(gameId)],
+        [gameConfPath, 'serverIp = [0-9]+.[0-9]+.[0-9]+.[0-9]+', 'serverIp = '+str(ip)],
         [gameReStartShPath, '[a-zA-Z]+GameSer', dirName + 'GameSer'],
         [gameStartShPath, '[a-zA-Z]+GameSer', dirName + 'GameSer'],
     ]
@@ -161,12 +134,17 @@ def main():
     userNum = getArgvValue('-num')
     force = getArgvValue('-f')
     justUpdateConf = getArgvValue('-u')
+    ip = getArgvValue('-ip')
+    path = getArgvValue('-p')
 
-    # log(dirName, gameId, userNum, force, justUpdateConf)
+    path = path or '../'
+    initPath(path)
 
+    # 如果为空，则手动输入
     dirName = inputStrIfNone(dirName, 'dirname')
     gameId = inputStrIfNone(gameId, 'gameId')
     userNum = inputStrIfNone(userNum, 'userNum')
+    ip = inputStrIfNone(ip, 'server ip')
 
     if justUpdateConf == True:
         log('just update conf')
@@ -174,7 +152,7 @@ def main():
         log('start copy dir ')
         copyGameDir(dirName, force)
 
-    updateConf(dirName, gameId, userNum)
+    updateConf(dirName, gameId, userNum, ip)
 
 if __name__ == '__main__':
     main();
