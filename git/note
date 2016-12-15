@@ -4,6 +4,8 @@ rm
 pwd
 ssh-keygen -t rsa -C "email@163.com"  生成ssh key
 
+sublime-git sublime2/3的git插件,环境变量里需有git
+
 git config --global user.name "username"
 git config --global user.email "email@xx.com"
 git config --global -l

@@ -18,23 +18,26 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 npm init:
 创建模板，生成此路径下对应的nodejs项目配置package.json
-
 npm install:
-在此路径下安装包，自动创建node_module保存安装的模板
+在项目路径下运行此命令，将自动下载所需依赖库，保存到项目路径下的node_module
 
-1.express: nodejs入门级服务器框架
-
-2.ORM2： nodejs的对象关系映射，支持mysql
+nodejs框架
+1.express: 		nodejs入门级服务器框架
+2.ORM2： 		nodejs的对象关系映射，支持mysql
+3.sequelize 	nodejs的对象关系映射，支持mysql
+4.redis 		Redis是一个key-value类型的数据库
+5.jsonwebtoken 	token生成
 
 
 相关技术:
-
-使用 AngularJS & NodeJS 实现基于 token 的认证应用
-https://zhuanlan.zhihu.com/p/19920223?columnSlug=FrontendMagazine
+token https://zhuanlan.zhihu.com/p/19920223?columnSlug=FrontendMagazine
+GID 为GroupId，即组ID，用来标识用户组的唯一标识符
+UID 为UserId，即用户ID，用来标识每个用户的唯一标示符
 
 
 相关工具:
 RESTClient: 火狐的http请求插件
+postman:	chrome http插件
 
 
 相关问题:

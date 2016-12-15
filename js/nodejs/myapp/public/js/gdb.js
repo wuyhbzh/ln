@@ -2,7 +2,6 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('gamebzh', 'gamebzh', '2889372', {host : '115.159.45.241', port : '3306', dialect : 'mysql'});
 
 var prIsLoaded = false;
-var prIsLoading = false;
 
 // 定义表， sync的时如没有此表将创建表
 var Users = sequelize.define('tusers',{
@@ -16,14 +15,18 @@ var Users = sequelize.define('tusers',{
 
 });
 
+console.log('load gdb')
 
-exports.getInstance = function(){
-	if (prIsLoaded) {
-		return exports;
-	}else{
-		sequelize.sync({force:false});
-	}
-}
+// exports.getInstance = function(){
+// 	if (prIsLoaded) {
+// 		console.log('return gdb')
+// 		return exports;
+// 	}else{
+// 		prIsLoaded = true;
+// 		//sequelize.sync({force:false});
+// 		console.log('sync gdb')
+// 	}
+// }
 
 exports.getUsers = function(cb){
 	Users.findOne({
