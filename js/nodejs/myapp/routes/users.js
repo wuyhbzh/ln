@@ -1,5 +1,5 @@
 var express = require('express');
-var Dbmod = require('../public/javascripts/dbdom')
+var Dbmod = require('../public/js/dbdom')
 var router = express.Router();
 
 /* GET users listing. */
