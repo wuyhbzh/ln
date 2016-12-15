@@ -15,7 +15,7 @@ var Users = sequelize.define('tusers',{
 
 
 // 同步
-sequelize.sync().then(function() {
+sequelize.sync({force:false}).then(function() {
 	
 	// 添加数据
 	// return Users.create({
@@ -24,10 +24,15 @@ sequelize.sync().then(function() {
 	// 	phoneNum: '8888',
 	// });
 
-
-	Users.findById(1).then(function(res){
-		console.log(res.id);
+	Users.findOne({
+		where:{id:1}
+	}).then(function(data){
+		console.log(data.name);
 	});
+
+	// Users.findById(1).then(function(res){
+	// 	console.log(res.id);
+	// });
 
 	// sequelize.query('select * from tusers', null, {logging : true, plain : true,  raw : true},[]).success(function(res){
 	//     console.log(res);
