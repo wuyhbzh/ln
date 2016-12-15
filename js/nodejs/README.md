@@ -35,3 +35,17 @@ https://zhuanlan.zhihu.com/p/19920223?columnSlug=FrontendMagazine
 
 相关工具:
 RESTClient: 火狐的http请求插件
+
+
+相关问题:
+Cannot find module 'mysql'
+node中引用自定义模块（非核心模块）时会进行如下三个步骤
+1.路径分析
+2.文件定位
+3.编译执行
+而路径分析是安如下方式进行的：
+1）当前目录下的node_modules目录,
+2）父目录下的node_modules目录；
+3）父目录的父目录下的node_modules目录；
+4）逐级递归，直到根目录下的node_modules目录。
+如果这些目录中均未找到代码中所引用的module,那么就会报出错误：Cannot find module 'mysql'
