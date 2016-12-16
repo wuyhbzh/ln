@@ -11,46 +11,46 @@ function runSample() {
 
 	// 设置一个字符串类型的值，返回值：OK
 	client.set("string key", "Hello World", function(err, reply) {
-		console.log(reply.toString());
+		console.log('set string key:', reply.toString());
 	});
 
 	// 获取一个字符串类型的值，返回字：value
 	client.get("string key", function(err, reply) {
-		console.log(reply.toString());
+		console.log('get string key:' + reply.toString());
 	});
 
 	// 另外一种方式获取一个字符串类型的值，返回字：value
 	var multiCmd = client.multi();
 	multiCmd.get("string key");
 	multiCmd.exec(function(err, reply) {
-		console.log(reply.toString());
+		console.log('get string key multi:' + reply.toString());
 	});
 
 	// 设置失效时间
 	client.expire('string key', 3);
 
 	// 有效时间验证
-	var myTimer = setInterval(function() {
+	var myTimer1 = setInterval(function() {
 		client.get('string key', function(err, reply) {
 			if (reply) {
 				console.log('I live: ' + reply.toString());
 			} else {
-				clearTimeout(myTimer);
-				console.log('I expired');
+				clearTimeout(myTimer1);
+				console.log('I live over');
 				client.quit();
 			}
 		});
 	}, 1000);
 
 	// 检查一个值在失效之前存留了多长时间
-	var myTimer = setInterval(function() {
+	var myTimer2 = setInterval(function() {
 		client.get('string key', function(err, reply) {
 			if (reply) {
-				console.log('I live: ' + reply.toString());
+				// console.log('I live: ' + reply.toString());
 				client.ttl('string key', writeTTL);
 			} else {
-				clearTimeout(myTimer);
-				console.log('I expired');
+				clearTimeout(myTimer2);
+				console.log('live time over');
 				client.quit();
 			}
 		});
@@ -68,7 +68,7 @@ function runSample() {
 }
 
 function writeTTL(err, data) {
-	console.log("I live for this long yet: " + data);
+	console.log("live time " + data);
 }
 
 function showData(err, data) {
