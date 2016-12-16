@@ -63,8 +63,10 @@ class Node(object):
  
     def __str__(self):
         line = self.name
+        # 描述前的空格
         for num in range(0, self.childtier+2):
             line = line + Notations[LOCATION_TAIL_GAP]
+            
         line = line + self.desc
         sections = [line]
         parent = self.has_parent()
