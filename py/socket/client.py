@@ -14,3 +14,15 @@ while True:
 
 print('socket close');
 s.close()
+
+
+
+
+
+### input和raw_input的区别 ###
+# input返回的是数值类型，如int,float
+# raw_inpout返回的是字符串类型，string类型
+
+# input是通过raw_input来实现的
+# def input(prompt):
+#     return (eval(raw_input(prompt)))
