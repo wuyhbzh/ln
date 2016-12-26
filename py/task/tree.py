@@ -1,13 +1,35 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-"""
-gentrees.py - generate the tree of specified directory
-"""
+#coding=utf-8
 import os
 import optparse
 import codecs
-from treeconf import dirlist
-from treeconf import ignored
+
+# '文件夹'：'描述'',
+# '父文件夹/文件夹':'描述',  （为了防止文件夹同名，但是只支持一层父文件夹）
+dirlist = {
+    
+    'desc':'root desc',
+    'AVGouji/AI':'啦啦啦啦',
+    'AI':'啊啊啊啊',
+    
+    '..' : '                上一级目录',
+    'mytest' : '            文件夹描述咯',
+    'SimpleHttpServer' : '  丑陋http服务端例子',
+    'socket' : '            测试py socket用',
+    'task' : '              任务',
+    'bin' : '               root',
+    'public' : '            公用资源',
+    'img' : '               图片资源',
+    'css' : '               样式',
+    'public/js' : '                javascript脚本',
+    'py' : '                py交易',
+}
+
+# 忽略的文件夹
+ignored = {
+    '.svn',
+    '.git',
+    'node_modules',
+}
 
 
 # 只找到key则 返回 true
@@ -119,9 +141,8 @@ class Tree(object):
  
     def write2file(self, filename):
         try:
-            with codecs.open(filename, 'w', 'utf-8') as fp:
-                fp.writelines(str(node) + '\n'
-                              for node in self.nodes)
+            with codecs.open(filename, 'w') as fp:
+                fp.writelines(str(node) + "\n" for node in self.nodes)
         except IOError as e:
             print(e)
             return False
