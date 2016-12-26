@@ -1,4 +1,3 @@
-#!/usr/bin/python
 #coding=utf-8
 import urllib
 import urllib2
@@ -7,38 +6,15 @@ import re
 import time
 import random
 
-url1 = 'http://pr.myav.tv/zh-TW/Actress/Index/930'
-url2 = 'http://news.163.com'
-url3 = 'http://news.163.com/rank/'
-url4 = 'http://tieba.baidu.com/p/2460150866'
+url1 = 'http://www.tuigirl.com'
+url2 = 'http://tieba.baidu.com/p/2460150866'
 urlerror = "http://www.runoob.com/111"
 
 
 def getHtml(url):
     page = urllib.urlopen(url)
     html = page.read()
-    print(html)
     return html
-
-# html = getHtml("http://news.163.com")
-
-# print html
-
-
-# def requestHtmlGbk(url):
-#     response = requests.get(url)
-#     content = requests.get(url).content
-#     print content.decode("gbk").encode('utf-8')
-
-# requestHtmlGbk("http://news.163.com")
-
-
-# def requestHtml(url):
-#     response = requests.get(url)
-#     content = requests.get(url).content
-#     print content
-
-# requestHtml("http://pr.myav.tv/zh-TW/Actress/Index/930");
 
 
 def findImg(content):
@@ -97,10 +73,10 @@ def downUrlTo(url, path):
     imgfile.close()
     wf = open(path, 'wb')
     wf.write(rImg)
-    wf.close()
-    print "Start : %s" % time.ctime()
-    time.sleep(1)
-    print "End : %s" % time.ctime()
+    # wf.close()
+    # print "Start : %s" % time.ctime()
+    # time.sleep(1)
+    # print "End : %s" % time.ctime()
 
 def useProxy():
   proxyhandler = urllib2.ProxyHandler({"https":"http://wuyhbzh:123456@b.twgjsq.pw"})
@@ -108,18 +84,17 @@ def useProxy():
   urllib2.install_opener(opener)
 
 def main():
-    content = getHtml(url4)
-    # content = getFileContent('test.html')
+    content = getHtml(url1)
 
     imglist = findImg(content)
     imgstr  = ""
     imgname = ""
     for imgurl in imglist:
         imgname = imgurl[imgurl.rfind("/") + 1:]
-        print imgname
-        downUrlTo(imgurl, "imglist/" + imgname)
+        print url1+imgurl
+        downUrlTo(url1+imgurl, imgname)
         imgstr = imgstr + imgurl + '\n'
-        
+        # print imgstr
 
     saveFile('imgurl.txt', imgstr)
 
