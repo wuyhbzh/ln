@@ -1,14 +1,14 @@
-// javascript base
+// 启动strict模式， 不允许声明全局变量
+'use strict';
 
 function log(){
     var str = "";
-    for(i=0; i<arguments.length;  i++){
+    for(var i=0; i<arguments.length;  i++){
         str = str + arguments[i] + " ";
     }
     console.log(str);
 }
 
-//
 
 // 数据类型：number、string、object、Boolean、null、function, undefined
 // string： 由单引号或双引号的字符串
