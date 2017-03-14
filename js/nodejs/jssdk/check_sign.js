@@ -1,3 +1,5 @@
+// 微信sdk
+
 var sign = require('./sign.js');
 console.log(sign('jsapi_ticket', 'http://example.com'));
 /*
