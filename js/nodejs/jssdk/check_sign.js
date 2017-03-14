@@ -1,7 +1,9 @@
 // 微信sdk
 
 var sign = require('./sign.js');
-console.log(sign('jsapi_ticket', 'http://example.com'));
+var config = sign('jsapi_ticket', 'http://gamebzh.net');
+console.log(config.nonceStr);
+
 /*
  *something like this
  *{
