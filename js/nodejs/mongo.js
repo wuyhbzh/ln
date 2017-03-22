@@ -7,7 +7,7 @@ var insertData = function(db, callback) {
     //连接到表 site
     var collection = db.collection('site');
     //插入数据
-    var data = [{"name":"wyh","desc":"搬砖工"}, {"name":"zhw","url":"搬砖工"}];
+    var data = [{"name":"wyh","desc":"搬砖工"}, {"name":"zhw","desc":"搬砖工"}];
     collection.insert(data, function(err, result) { 
         if(err)
         {
