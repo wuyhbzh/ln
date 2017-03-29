@@ -16,4 +16,7 @@ t = [line for line in reader]
 
 print[0][0]
 
-print '1'
+
+lines = ["a" for i in range(5)]
+print lines
+print "".join(lines)
