@@ -61,3 +61,22 @@ argTest(1, "abcd", {arg:16, name:"jone"});
 
 // prototype
 // http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html
+
+
+// 多参数传递
+function test1(a, b){
+    console.log(a, b);
+}
+
+function test2(a, b, c){
+    console.log(a, b, c);
+}
+
+function argcb(fn, args){
+    fn.apply(this, args);
+}
+
+argcb(test1, [1, 2]);
+argcb(test2, [1, 3, 4]);
+
+test1.apply(null, [1,2]);
