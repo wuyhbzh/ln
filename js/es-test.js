@@ -44,3 +44,20 @@ if({}){ log("object is true")}
 log( [] instanceof Array);
 // constructor 属性返回对创建此对象的数组函数的引用
 log( [].constructor === Array);
+
+
+// arguments 多参数
+log("arguments ------------");
+function argTest(){
+    console.log(arguments);
+}
+
+var num = 123;
+var str = "is str."
+argTest(1, num, str);
+argTest(1, "abcd", {arg:16, name:"jone"});
+
+
+
+// prototype
+// http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html
