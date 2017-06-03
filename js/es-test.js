@@ -64,19 +64,40 @@ argTest(1, "abcd", {arg:16, name:"jone"});
 
 
 // 多参数传递
-function test1(a, b){
-    console.log(a, b);
+function argsCalss(){ 
+
+    this.test1 = function(a, b){
+        console.log("tset1", a, b);
+    };
+
+    this.test2 = function(a, b, c){
+        console.log("tset2", a, b, c);
+    };
+
+    this.test3 = function() {
+        console.log("tset3");
+    };
+
+    this.callback = function (funcName, args){
+        this[funcName](args);
+    };
+
+    this.argsCallBack = function(funcName, args){
+        this[funcName].apply(null, args);
+    };
 }
 
-function test2(a, b, c){
-    console.log(a, b, c);
-}
+// argcb(test1, [1, 2]);
+// argcb(test2, [1, 3, 4]);
+var ac = new argsCalss();
+ac.argsCallBack("test1", [1, 2]);
+ac.argsCallBack("test2", [1, 2, 3]);
+ac.callback("test2", [1, 2, 3]);
+// test3.apply(null, []);
 
-function argcb(fn, args){
-    fn.apply(this, args);
-}
+console.log(typeof(asdf));
 
-argcb(test1, [1, 2]);
-argcb(test2, [1, 3, 4]);
 
-test1.apply(null, [1,2]);
+// mx.sdk.sdkManager.([\w] +)\((.+?)\)
+
+// mx.sdk.sdkManager.argsCallBack("\1", [\2]
