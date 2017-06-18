@@ -3,3 +3,7 @@ username
 userpassw
 put 上传
 get 下载
+
+安装gcc：yum install gcc 
+
+安装g++：yum install gcc-c++
