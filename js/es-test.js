@@ -44,3 +44,60 @@ if({}){ log("object is true")}
 log( [] instanceof Array);
 // constructor 属性返回对创建此对象的数组函数的引用
 log( [].constructor === Array);
+
+
+// arguments 多参数
+log("arguments ------------");
+function argTest(){
+    console.log(arguments);
+}
+
+var num = 123;
+var str = "is str."
+argTest(1, num, str);
+argTest(1, "abcd", {arg:16, name:"jone"});
+
+
+
+// prototype
+// http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html
+
+
+// 多参数传递
+function argsCalss(){ 
+
+    this.test1 = function(a, b){
+        console.log("tset1", a, b);
+    };
+
+    this.test2 = function(a, b, c){
+        console.log("tset2", a, b, c);
+    };
+
+    this.test3 = function() {
+        console.log("tset3");
+    };
+
+    this.callback = function (funcName, args){
+        this[funcName](args);
+    };
+
+    this.argsCallBack = function(funcName, args){
+        this[funcName].apply(null, args);
+    };
+}
+
+// argcb(test1, [1, 2]);
+// argcb(test2, [1, 3, 4]);
+var ac = new argsCalss();
+ac.argsCallBack("test1", [1, 2]);
+ac.argsCallBack("test2", [1, 2, 3]);
+ac.callback("test2", [1, 2, 3]);
+// test3.apply(null, []);
+
+console.log(typeof(asdf));
+
+
+// mx.sdk.sdkManager.([\w] +)\((.+?)\)
+
+// mx.sdk.sdkManager.argsCallBack("\1", [\2]
