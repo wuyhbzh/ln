@@ -85,7 +85,6 @@ function IsEmail(str) {
 
 
 var arr_str = "[1,100, 30]";
-var reg = new RegExp("[0-9]*");
 var arr_reg = arr_str.match(/[0-9]+/g);
 log(arr_reg);
 for(var key in arr_reg){
