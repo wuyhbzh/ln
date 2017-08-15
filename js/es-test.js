@@ -101,3 +101,6 @@ console.log(typeof(asdf));
 // mx.sdk.sdkManager.([\w] +)\((.+?)\)
 
 // mx.sdk.sdkManager.argsCallBack("\1", [\2]
+
+var str = '{0}dsdfsdf'
+log( str.replace('{0}', 123) );
