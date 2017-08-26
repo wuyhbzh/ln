@@ -9,7 +9,7 @@ var debug = require('debug')('myapp:server');
 var http = require('http');
 
 // 
-require('../public/js/gdb')
+// require('../public/js/gdb')
 
 /**
  * Get port from environment and store in Express.

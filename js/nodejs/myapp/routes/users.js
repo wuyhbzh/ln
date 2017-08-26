@@ -1,7 +1,7 @@
 var express = require('express');
 var url = require('url');
 var router = express.Router();
-var gdb = require('../public/js/gdb')
+// var gdb = require('../public/js/gdb')
 // var mdb = require('../public/js/mdb')
 
 /* GET users listing. */
