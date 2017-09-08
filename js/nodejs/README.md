@@ -1,3 +1,6 @@
+nodejs 调试  node-inspector
+
+
 sublime nodejs 插件
 1、下载Nodejs插件，下载地址为：https://github.com/tanepiper/SublimeText-Nodejs下载zip压缩包后解压，文件名改为Nodejs
 2、打开Sublime Text3，点击菜单“Perferences” =>“Browse 	Packages”打开“Packages”文件夹，并将第1部的Nodejs文件夹剪切进来
@@ -52,3 +55,5 @@ node中引用自定义模块（非核心模块）时会进行如下三个步骤
 3）父目录的父目录下的node_modules目录；
 4）逐级递归，直到根目录下的node_modules目录。
 如果这些目录中均未找到代码中所引用的module,那么就会报出错误：Cannot find module 'mysql'
+
+
