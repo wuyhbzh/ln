@@ -4,7 +4,7 @@ import paramiko
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect('112.74.39.169', username = 'root', password = '6YCa@8pxb1P#nVw#', timeout = 5)
-cmd = 'cd game-server;./start.sh;ls'
+cmd = 'cd logs; ls'
 
 password= 'P@ssw0rd'
 
