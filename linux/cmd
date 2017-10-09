@@ -4,6 +4,34 @@ userpassw
 put 上传
 get 下载
 
+
 安装gcc：yum install gcc 
 
 安装g++：yum install gcc-c++
+
+yum -y install gcc gcc-c++ autoconf automake make  
+
+
+解压
+tar -xvf file.tar //解压 tar包
+tar -xzvf file.tar.gz //解压tar.gz
+tar -xjvf file.tar.bz2   //解压 tar.bz2
+tar -xZvf file.tar.Z   //解压tar.Z
+unrar e file.rar //解压rar
+unzip file.zip //解压zip
+http://www.cnblogs.com/qq78292959/archive/2011/07/06/2099427.html
+
+
+
+安装nginx http://www.linuxidc.com/Linux/2016-09/134907.htm
+./configure是源代码安装的第一步，主要的作用是对即将安装的软件进行配置，检查当前的环境是否满足要安装软件的依赖关系
+安装nginx 提示找不到gcc ; c compiler cc is not found
+安装nginx 提示没有pcre(正则表达式库,支持nginx的Rewrite功能); the http rewrite module requires the pcre
+[root@lxp2 Downloads]# tar -xf pcre-8.20.tar.gz   
+[root@lxp2 Downloads]# cd pcre-8.20  
+[root@lxp2 pcre-8.20]# ./configure  
+[root@lxp2 pcre-8.20]# make  
+[root@lxp2 pcre-8.20]# sudo make install  
+
+
+ zlib zlib-devel 区别  zlib包含.so .a等运行库  zlib-devel包含源码
