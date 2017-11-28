@@ -13,3 +13,6 @@ CentOS 7的yum源中貌似没有正常安装mysql时的mysql-sever文件，需�
 # mysql -uroot
 mysql> set password for ‘root’@‘localhost’ = password('mypasswd');
 mysql> exit
+
+
+http://www.linuxidc.com/Linux/2016-09/134940.htm
