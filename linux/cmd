@@ -22,6 +22,12 @@ unzip file.zip //解压zip
 http://www.cnblogs.com/qq78292959/archive/2011/07/06/2099427.html
 
 
+安装 openssl1.0
+./config --prefix=/usr/local --openssldir=/usr/local/openssl
+make;make test;make install
+    cms.pod around line 457: Expected text after =item, not a number 的解决方法
+    http://blog.csdn.net/sukhoi27smk/article/details/45619695
+
 
 安装nginx http://www.linuxidc.com/Linux/2016-09/134907.htm
 ./configure是源代码安装的第一步，主要的作用是对即将安装的软件进行配置，检查当前的环境是否满足要安装软件的依赖关系

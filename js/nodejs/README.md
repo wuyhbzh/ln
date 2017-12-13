@@ -1,4 +1,6 @@
-https://github.com/Unitech/pm2 
+博客: hexo    插件: hexo-helper-live2d
+
+负载均衡 :https://github.com/Unitech/pm2 
 
 
 nodejs 调试  node-inspector
