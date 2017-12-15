@@ -1,3 +1,4 @@
+// 单例
 exports.f = function(){
 
 	console.log('bbb');
