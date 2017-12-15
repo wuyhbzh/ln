@@ -1,3 +1,4 @@
 // https://www.codeandweb.com/physicseditor
-require('./project.js');
+
+gm = require('./gameManager.js');
 gm.run();
