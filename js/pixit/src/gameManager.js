@@ -20,12 +20,12 @@ exp.run = function() {
     document.body.appendChild(app.view);
 
     loader
-        .add("assert/blob.png")
+        .add("asserts/blob.png")
         .load(setup);
 
     let cat;
     function setup() {
-        cat = new Sprite(resources["assert/blob.png"].texture);
+        cat = new Sprite(resources["asserts/blob.png"].texture);
         cat.y = 96;
         app.stage.addChild(cat);
         app.ticker.add(delta => gameLoop(delta));
