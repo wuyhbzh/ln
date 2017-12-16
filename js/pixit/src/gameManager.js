@@ -1,7 +1,7 @@
 export default class GameManager
 {
     constructor()
-    {
+    { 
         let cfg = {
             width: 256,
             height: 256,
