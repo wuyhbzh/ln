@@ -1,4 +1,9 @@
 // https://www.codeandweb.com/physicseditor
+import GameManager from './GameManager';
+import * as views from './View';
 
-import { run } from './gameManager';
-run();
+
+global.gamer = new GameManager();
+
+
+gamer.run(views.fight);
