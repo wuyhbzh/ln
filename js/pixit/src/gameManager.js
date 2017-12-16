@@ -1,7 +1,5 @@
-var exp = {};
-module.exports = exp;
-
-exp.run = function() { 
+export function run()
+{
     let Application = PIXI.Application,
         Container = PIXI.Container,
         loader = PIXI.loader,
@@ -34,4 +32,7 @@ exp.run = function() {
     function gameLoop(delta) {
         cat.x += 1;
     }
+    return 0;
 }
+
+
