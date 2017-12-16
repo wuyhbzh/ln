@@ -1,1 +1,1 @@
-export { default as fight } from './fight';
+export { default as Fight } from './Fight';

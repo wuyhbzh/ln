@@ -119,18 +119,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fight = require('./fight');
+var _Fight = require('./Fight');
 
-Object.defineProperty(exports, 'fight', {
+Object.defineProperty(exports, 'Fight', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_fight).default;
+    return _interopRequireDefault(_Fight).default;
   }
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./fight":2}],4:[function(require,module,exports){
+},{"./Fight":2}],4:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -140,7 +140,7 @@ var _GameManager2 = _interopRequireDefault(_GameManager);
 
 var _View = require('./View');
 
-var views = _interopRequireWildcard(_View);
+var View = _interopRequireWildcard(_View);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -149,7 +149,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // https://www.codeandweb.com/physicseditor
 global.gamer = new _GameManager2.default();
 
-gamer.run(views.fight);
+gamer.run(View.Fight);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./GameManager":1,"./View":3}]},{},[4]);
