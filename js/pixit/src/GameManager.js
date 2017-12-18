@@ -39,6 +39,11 @@ export default class GameManager
          .load(v.onEnter.bind(v))
     }
 
+    addChild(node)
+    {
+        this.app.stage.addChild(node);
+    }
+
     addView()
     {
 

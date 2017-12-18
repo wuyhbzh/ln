@@ -50,6 +50,11 @@ var GameManager = function () {
             this.loader.add(v.res).load(v.onEnter.bind(v));
         }
     }, {
+        key: 'addChild',
+        value: function addChild(node) {
+            this.app.stage.addChild(node);
+        }
+    }, {
         key: 'addView',
         value: function addView() {}
     }, {
@@ -89,21 +94,81 @@ var Fight = function () {
     }, {
         key: "onEnter",
         value: function onEnter() {
-            var _this = this;
-
             console.log('do onEnter');
             this.cat = new gamer.Sprite(gamer.resources["asserts/blob.png"].texture);
             this.cat.y = 96;
+            gamer.addChild(this.cat);
 
-            gamer.app.stage.addChild(this.cat);
-            gamer.app.ticker.add(function (delta) {
-                return _this.gameLoop(delta);
-            });
+            // gamer.app.ticker.add(delta => this.gameLoop(delta));
+
+            var bunny = this.createBunny(100, 100);
+            gamer.addChild(bunny);
+        }
+
+        // gameLoop(delta)
+        // {
+        //     this.cat.x += 1;
+        // }
+
+    }, {
+        key: "createBunny",
+        value: function createBunny(x, y) {
+
+            // create our little bunny friend..
+            var bunny = new gamer.Sprite(gamer.resources["asserts/blob.png"].texture);
+            // enable the bunny to be interactive... this will allow it to respond to mouse and touch events
+            bunny.interactive = true;
+            // this button mode will mean the hand cursor appears when you roll over the bunny with your mouse
+            // bunny.buttonMode = true;
+
+            bunny.on('pointerdown', this.onDragStart).on('pointerup', this.onDragEnd).on('pointerupoutside', this.onDragEnd).on('pointermove', this.onDragMove);
+
+            // For mouse-only events
+            // .on('mousedown', onDragStart)
+            // .on('mouseup', onDragEnd)
+            // .on('mouseupoutside', onDragEnd)
+            // .on('mousemove', onDragMove);
+
+            // For touch-only events
+            // .on('touchstart', onDragStart)
+            // .on('touchend', onDragEnd)
+            // .on('touchendoutside', onDragEnd)
+            // .on('touchmove', onDragMove);
+
+            // move the sprite to its designated position
+            bunny.x = x;
+            bunny.y = y;
+
+            return bunny;
+            // add it to the stage
+            // app.stage.addChild(bunny);
         }
     }, {
-        key: "gameLoop",
-        value: function gameLoop(delta) {
-            this.cat.x += 1;
+        key: "onDragStart",
+        value: function onDragStart(event) {
+            // store a reference to the data
+            // the reason for this is because of multitouch
+            // we want to track the movement of this particular touch
+            this.data = event.data;
+            this.alpha = 0.5;
+            this.dragging = true;
+        }
+    }, {
+        key: "onDragEnd",
+        value: function onDragEnd() {
+            this.alpha = 1;
+            this.dragging = false;
+            // set the interaction data to null
+            this.data = null;
+        }
+    }, {
+        key: "onDragMove",
+        value: function onDragMove() {
+            if (this.dragging) {
+                var newPosition = this.data.getLocalPosition(this.parent);
+                this.x = newPosition.x;
+                this.y = newPosition.y;
+            }
         }
     }]);
 
