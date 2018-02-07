@@ -1,0 +1,5 @@
+http://blog.csdn.net/wuxing26jiayou/article/details/72845249
+
+在/etc/profile文件中添加变量
+用vi在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。
+配置后 执行 source /etc/profile  
