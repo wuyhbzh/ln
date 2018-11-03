@@ -104,3 +104,11 @@ console.log(typeof(asdf));
 
 var str = '{0}dsdfsdf'
 log( str.replace('{0}', 123) );
+
+log(str.indexOf('sdf'));
+log(str.indexOf('sdfg'));
+
+function testa() {
+    console.log.apply(null, [1,2,3,4])
+}
+testa()
