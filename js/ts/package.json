@@ -1,0 +1,22 @@
+{
+  "name": "ts_demo",
+  "version": "1.0.0",
+  "description": "ln ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "waht command"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no git"
+  },
+  "keywords": [
+    "no",
+    "keyword"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "pixi.js": "^4.7.0"
+  }
+}

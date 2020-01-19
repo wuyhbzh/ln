@@ -309,6 +309,7 @@ function js_beautify(js_source_text, indent_size, indent_character, indent_level
             } else if (last_type !== 'TK_WORD' && last_type !== 'TK_OPERATOR') {
                 print_space();
             } else if (in_array(last_word, line_starters) && last_word !== 'function') {
+                console.log('last_word', last_word)
                 print_space();
             }
             print_token();
@@ -403,6 +404,7 @@ function js_beautify(js_source_text, indent_size, indent_character, indent_level
                     // no need to force newline on else break
                     print_space();
                 } else if ((last_type === 'TK_START_EXPR' || last_text === '=') && token_text === 'function') {
+                    console.log('last_word', last_word)
                     // no need to force newline on 'function': (function
                     // DONOTHING
                 } else if (last_type === 'TK_WORD' && (last_text === 'return' || last_text === 'throw')) {
