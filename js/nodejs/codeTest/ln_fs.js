@@ -1,7 +1,7 @@
 "use strict";
 var fs = require("fs");
 
-var wfs = fs.createWriteStream('js/nodejs/test.js', 'utf-8');
+var wfs = fs.createWriteStream('js/nodejs/codeTest/test.js', 'utf-8');
 wfs.on('data', function(chunk){
     console.log('wfs DATA:');
     console.log(chunk);
@@ -16,7 +16,7 @@ wfs.write("// 测试写文件 from ln_fs.js")
 wfs.end();
 
 
-var rfs = fs.createReadStream("js/nodejs/test.js", "utf-8");
+var rfs = fs.createReadStream("js/nodejs/codeTest/test.js", "utf-8");
 rfs.on("data", function(chunk){
     console.log("rfs DATA:");
     console.log(chunk);

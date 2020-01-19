@@ -35,6 +35,8 @@ nodejs框架
 3.sequelize 	nodejs的对象关系映射，支持mysql
 4.redis 		Redis是一个key-value类型的数据库
 5.jsonwebtoken 	token生成
+6.node-schedule node定时器
+7.async
 
 
 相关技术:

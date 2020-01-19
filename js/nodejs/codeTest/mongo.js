@@ -1,3 +1,5 @@
+// https://www.runoob.com/mongodb/mongodb-window-install.html window安装
+
 var MongoClient = require('mongodb').MongoClient;
 // can't find mongodb module
 // 环境变量 NODE_PATH = "C:\Users\Administrator\AppData\Roaming\npm\node_modules;C:\Users\Administrator\node_modules"
