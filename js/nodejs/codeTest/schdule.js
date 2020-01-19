@@ -13,7 +13,6 @@ const task1 = () => {
         console.log('task1 :' + new Date());
     });
 }
-task1();
 
 
 const task2 = () => {
@@ -22,7 +21,7 @@ const task2 = () => {
         console.log('task2 :' + new Date());
     })
 }
-task2()
+
 
 
 // 接收对象 格式
@@ -51,7 +50,7 @@ function task3() {
         console.log('task3 :' + new Date());
     });
 }
-task3();
+
 
 
 // 周处理
@@ -67,21 +66,29 @@ function task4() {
     // rule.hour = 17;
     // rule.minute = 0;
     rule.second = 10;
-    var j = schedule.scheduleJob(rule, function () {
+    schedule.scheduleJob(rule, function () {
         console.log('task4 ' + new Date());
     });
 }
-task4();
+
 
 
 // 周处理
 function task5() {
+    var reshedule = true;   // 停止后, 是否重新启动
     var rule = new schedule.RecurrenceRule();
-
     rule.second = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+
     var j = schedule.scheduleJob(rule, function () {
         console.log('task5 ' + new Date());
+        j.cancel(reshedule);
     });
 }
+
+
+// task1();
+// task2()
+// task3();
+// task4();
 task5();
 
