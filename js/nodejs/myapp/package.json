@@ -14,7 +14,7 @@
     "hexo-helper-live2d": "^2.0.8",
     "jade": "~1.11.0",
     "jsonwebtoken": "^7.2.1",
-    "morgan": "~1.7.0",
+    "morgan": "~1.9.1",
     "mysql": "^2.12.0",
     "redis": "^2.6.3",
     "sequelize": "^3.27.0",
